@@ -37,3 +37,6 @@ keys*.xml
 
 Gemfile
 Gemfile.lock
+
+# --- buildSrc --- #
+buildSrc/build
