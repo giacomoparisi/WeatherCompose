@@ -45,6 +45,19 @@ android {
 
 dependencies {
 
+    /* --- modules --- */
+    implementation(project(":entities"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":core"))
+
+    /* --- desugar --- */
+    coreLibraryDesugaring(Android.desugar)
+
+    /* --- kotlin --- */
+    implementation(KotlinX.Coroutines.core)
+    implementation(KotlinX.Coroutines.android)
+
     /* --- android --- */
     implementation(AndroidX.Core.ktx)
     implementation(AndroidX.Lifecycle.viewModelKtx)
@@ -61,7 +74,7 @@ dependencies {
     implementation(AndroidX.Compose.uiTooling)
     implementation(AndroidX.Compose.uiPreview)
     implementation(AndroidX.Compose.foundation)
-    implementation(AndroidX.Compose.material)
+    implementation(AndroidX.Compose.material3)
     implementation(AndroidX.Compose.animation)
     implementation(AndroidX.Lifecycle.viewModelCompose)
     implementation(AndroidX.Activity.compose)
