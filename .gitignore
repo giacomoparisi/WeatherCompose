@@ -1,0 +1,39 @@
+*.iml
+.gradle
+/local.properties
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/*
+.DS_Store
+/build
+/includedBuild/dependencies/build/
+/includedBuild/project-settings/build/
+/captures
+.externalNativeBuild
+app/signing.gradle
+app/signing.properties
+keys*.xml
+
+
+# --- fastlane --- #
+
+# fastlane specific
+/fastlane/report.xml
+
+# deliver temporary files
+/fastlane/Preview.html
+
+# snapshot generated screenshots
+/fastlane/screenshots
+
+# scan temporary files
+/fastlane/test_output
+
+# secret key
+/fastlane/key.json
+
+# --- gem files --- #
+
+Gemfile
+Gemfile.lock
