@@ -12,7 +12,7 @@ object GradlePlugin {
 
     object Kotlin {
 
-        const val version = "1.8.0"
+        const val version = "1.8.10"
 
         const val android = "org.jetbrains.kotlin.android"
     }

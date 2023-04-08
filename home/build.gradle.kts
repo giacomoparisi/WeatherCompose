@@ -1,22 +1,19 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.giacomoparisi.weathercompose"
+    namespace = "com.giacomoparisi.home"
     compileSdk = ProjectSettings.compileSdkVersion
 
     defaultConfig {
-        applicationId = "com.giacomoparisi.weathercompose"
         minSdk = ProjectSettings.minSdkVersion
-        targetSdk = ProjectSettings.targetSdkVersion
-        versionCode = ProjectSettings.versionCode
-        versionName = ProjectSettings.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -50,7 +47,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core"))
-    implementation(project(":home"))
 
     /* --- desugar --- */
     coreLibraryDesugaring(Android.desugar)
@@ -63,7 +59,6 @@ dependencies {
     implementation(AndroidX.Core.ktx)
     implementation(AndroidX.Lifecycle.viewModelKtx)
     implementation(AndroidX.Activity.compose)
-    implementation(Google.Material.material)
 
     /* --- hilt --- */
     implementation(Google.Hilt.android)
@@ -80,9 +75,4 @@ dependencies {
     implementation(AndroidX.Compose.animation)
     implementation(AndroidX.Lifecycle.viewModelCompose)
     implementation(AndroidX.Activity.compose)
-
-    /* --- navigation --- */
-    implementation(AndroidX.Navigation.compose)
-    implementation(Google.Accompanist.navigationAnimation)
-    implementation(AndroidX.Hilt.navigationCompose)
 }
