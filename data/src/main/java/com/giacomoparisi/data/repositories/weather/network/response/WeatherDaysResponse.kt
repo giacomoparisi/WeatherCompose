@@ -28,6 +28,7 @@ data class WeatherDaysResponse(
                     days = emptyList()
                 )
         }
+
     }
 }
 

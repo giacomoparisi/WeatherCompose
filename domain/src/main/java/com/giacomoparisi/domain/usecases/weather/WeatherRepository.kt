@@ -4,6 +4,6 @@ import com.giacomoparisi.entities.weather.WeatherDays
 
 interface WeatherRepository {
 
-    suspend fun getWeatherDays(): WeatherDays
+    suspend fun getWeatherDays(): WeatherDays?
 
 }

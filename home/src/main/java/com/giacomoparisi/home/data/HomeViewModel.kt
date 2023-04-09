@@ -5,9 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.giacomoparisi.data.error.ErrorMapper
 import com.giacomoparisi.data.error.toError
 import com.giacomoparisi.domain.datatype.LazyData
+import com.giacomoparisi.domain.datatype.toData
 import com.giacomoparisi.domain.ext.Action
 import com.giacomoparisi.domain.ext.action
 import com.giacomoparisi.domain.ext.launchAction
+import com.giacomoparisi.domain.ext.nullToError
+import com.giacomoparisi.domain.usecases.weather.GetDaysWeatherUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    private val getDaysWeatherUseCase: GetDaysWeatherUseCase,
     private val mutex: Mutex,
     private val errorMapper: ErrorMapper
 ) : ViewModel() {
@@ -42,6 +46,8 @@ class HomeViewModel @Inject constructor(
         action(
             {
                 emit { it.copy(weatherDays = LazyData.Loading()) }
+                val weatherDays = getDaysWeatherUseCase().nullToError()
+                emit { it.copy(weatherDays = weatherDays.toData()) }
             },
             { throwable ->
                 emit { it.copy(weatherDays = throwable.toError(errorMapper)) }

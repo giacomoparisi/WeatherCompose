@@ -1,5 +1,6 @@
 package com.giacomoparisi.core.compose.loading
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -38,25 +39,27 @@ fun Error(
     {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.Center),
+                .align(Alignment.Center)
+                .background(
+                    MaterialTheme.colorScheme.surface,
+                    MaterialTheme.shapes.medium
+                )
+                .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             LottieAnimation(
                 composition = composition,
                 progress = { progress },
                 modifier =
-                Modifier.size(50.dp)
+                Modifier.size(70.dp)
             )
             Text(
                 text = getErrorMessage(exception = error),
                 fontSize = 20.sp,
+                color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyLarge,
-                modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .padding(40.dp)
+                modifier = Modifier.padding(40.dp)
             )
             WeatherComposeButton(
                 text = stringResource(id = R.string.COMMON_error_retry),

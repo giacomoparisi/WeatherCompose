@@ -9,7 +9,7 @@ data class CurrentWeatherResponse(
     @Json(name = "last_updated") val lastUpdated: String? = null,
     @Json(name = "temp_c") val tempC: Double? = null,
     @Json(name = "temp_f") val tempF: Double? = null,
-    @Json(name = "is_day") val isDay: Boolean? = null,
+    @Json(name = "is_day") val isDay: Int? = null,
     @Json(name = "condition") val condition: ConditionResponse? = null,
     @Json(name = "wind_mph") val windMpH: Double? = null,
     @Json(name = "wind_kph") val windKmH: Double? = null,
@@ -33,7 +33,7 @@ data class CurrentWeatherResponse(
             else ->
                 WeatherHour(
                     instant = instant,
-                    isDay = isDay,
+                    isDay = isDay == 1,
                     condition = weatherCondition,
                     tempC = tempC,
                     tempF = tempF,

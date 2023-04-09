@@ -1,5 +1,6 @@
 package com.giacomoparisi.data.repositories.weather.network
 
+import com.giacomoparisi.data.repositories.weather.network.response.IpResponse
 import com.giacomoparisi.data.repositories.weather.network.response.WeatherDaysResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,5 +15,8 @@ interface WeatherApi {
         @Query("aqi") airQuality: String,
         @Query("alerts") alerts: String,
     ): WeatherDaysResponse
+
+    @GET("v1/ip.json")
+    suspend fun getIp(@Query("key") key: String): IpResponse
 
 }
