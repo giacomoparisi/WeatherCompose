@@ -11,8 +11,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import com.giacomoparisi.core.compose.loading.LoadingError
 import com.giacomoparisi.core.compose.preview.ScreenPreview
 import com.giacomoparisi.core.theme.WeatherComposeTheme
+import com.giacomoparisi.home.data.HomeAction
 import com.giacomoparisi.home.data.HomeState
 import com.giacomoparisi.home.data.HomeViewModel
 
@@ -21,33 +23,48 @@ fun HomeScreen(viewModel: HomeViewModel) {
 
     val state by viewModel.stateFlow.collectAsState()
 
-    HomeScreen(state = state)
+    HomeScreen(
+        state = state,
+        onWeatherDaysRetry = { viewModel.dispatch(HomeAction.GetWeatherDays) })
 
 }
 
 @Composable
-private fun HomeScreen(state: HomeState) {
-    Column(
-        modifier =
-        Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+private fun HomeScreen(
+    state: HomeState,
+    onWeatherDaysRetry: () -> Unit
+) {
+    LoadingError(
+        data = state.weatherDays,
+        onRetryClicked = onWeatherDaysRetry
     ) {
-        Text(
-            text = "Weather Compose",
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
-        )
+        Column(
+            modifier =
+            Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            Text(
+                text = "Weather Compose",
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onBackground,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
+}
+
+@Composable
+private fun HomeScreenPreview() {
+    HomeScreen(state = HomeState(), onWeatherDaysRetry = {})
 }
 
 @ScreenPreview
 @Composable
 private fun HomeScreenLightPreview() {
     WeatherComposeTheme(useDarkTheme = false) {
-        HomeScreen(state = HomeState())
+        HomeScreenPreview()
     }
 }
 
@@ -55,6 +72,6 @@ private fun HomeScreenLightPreview() {
 @Composable
 private fun HomeScreenDarkPreview() {
     WeatherComposeTheme(useDarkTheme = true) {
-        HomeScreen(state = HomeState())
+        HomeScreenPreview()
     }
 }

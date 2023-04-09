@@ -67,4 +67,7 @@ dependencies {
     implementation(AndroidX.Lifecycle.viewModelCompose)
     implementation(AndroidX.Activity.compose)
 
+    /* --- lottie --- */
+    implementation(AirBnb.lottieCompose)
+
 }

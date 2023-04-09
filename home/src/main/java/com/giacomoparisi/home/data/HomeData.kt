@@ -6,3 +6,9 @@ import com.giacomoparisi.entities.weather.WeatherDays
 data class HomeState(
     val weatherDays: LazyData<WeatherDays> = LazyData.Empty
 )
+
+sealed class HomeAction {
+
+    object GetWeatherDays: HomeAction()
+
+}
