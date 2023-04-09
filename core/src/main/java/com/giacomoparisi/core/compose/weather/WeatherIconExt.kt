@@ -2,6 +2,9 @@ package com.giacomoparisi.core.compose.weather
 
 import com.giacomoparisi.core.R
 import com.giacomoparisi.entities.weather.WeatherCondition
+import com.giacomoparisi.entities.weather.WeatherHour
+
+fun WeatherHour.icon(): Int = condition.icon(isDay)
 
 fun WeatherCondition.icon(isDay: Boolean): Int =
     if (isDay) iconDay()

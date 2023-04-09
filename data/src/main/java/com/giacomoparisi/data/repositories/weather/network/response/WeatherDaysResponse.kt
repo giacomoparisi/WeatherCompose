@@ -42,11 +42,10 @@ data class LocationResponse(
 
     fun toLocation(): Location? =
         when (null) {
-            name, region, lat, lon, country -> null
+            name, lat, lon, country -> null
             else ->
                 Location(
                     name = name,
-                    region = region,
                     lat = lat,
                     lon = lon,
                     country = country

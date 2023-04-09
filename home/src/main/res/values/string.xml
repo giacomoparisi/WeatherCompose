@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="HOME_wind">Wind</string>
+    <string name="HOME_humidity">Humidity</string>
+    <string name="HOME_chance_of_rain">Chance Of Rain</string>
+</resources>
