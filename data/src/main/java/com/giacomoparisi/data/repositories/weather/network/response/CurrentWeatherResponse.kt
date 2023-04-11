@@ -24,7 +24,7 @@ data class CurrentWeatherResponse(
 
     fun toWeatherHour(): WeatherHour? {
 
-        val instant = lastUpdatedEpoch?.let { Instant.ofEpochMilli(it) }
+        val instant = lastUpdatedEpoch?.let { Instant.ofEpochSecond(it) }
         val weatherCondition = condition?.toWeatherCondition()
 
         return when (null) {
