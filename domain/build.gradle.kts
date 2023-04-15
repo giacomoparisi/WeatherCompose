@@ -38,7 +38,7 @@ dependencies {
     /* --- modules --- */
     implementation(project(":entities"))
 
-    /* --- kotlin -e-- */
+    /* --- kotlin --- */
     implementation(KotlinX.Coroutines.core)
     implementation(KotlinX.Coroutines.android)
 

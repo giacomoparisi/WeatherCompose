@@ -2,7 +2,7 @@ object GradlePlugin {
 
     object Android {
 
-        const val version = "7.4.2"
+        const val version = "8.0.0"
 
         const val application = "com.android.application"
 
